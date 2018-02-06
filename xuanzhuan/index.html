@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>翻转Demo</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=640, target-densitydpi=device-dpi, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- <script type="text/javascript" src="js/index.js"></script> -->
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        img {
+            width: 300px;
+        }
+
+        li {
+            list-style-type: none;
+            float: left;
+        }
+
+        /* // 现代浏览器clearfix方案，不支持IE6/7 */
+
+        .clearfix:after {
+            display: table;
+            content: " ";
+            clear: both;
+        }
+
+        /* // 全浏览器通用的clearfix方案
+// 引入了zoom以支持IE6/7 */
+
+        .clearfix:after {
+            display: table;
+            content: " ";
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        /* // 全浏览器通用的clearfix方案【推荐】
+// 引入了zoom以支持IE6/7
+// 同时加入:before以解决现代浏览器上边距折叠的问题 */
+
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: " ";
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div style="position:relative;perspective: 2000px;" class="content">
+        <img style="transform:rotateY(0deg);position:absolute;top:0px;visibility: visible;" src="img/1.jpg" class="img">
+        <img style="transform:rotateY(95deg);position:absolute;top:0px;visibility: hidden;" src="img/2.jpg" class="img">
+        <span class="clearfix"></span>
+        </ul>
+
+    </div>
+
+    <script>
+        var target1 = document.getElementsByTagName('img')[0];
+        var target2 = document.getElementsByTagName('img')[1];
+        var d1 = 0;
+        var d2 = 95;
+        var inter = setInterval(function () {
+            d1 += 1;
+
+            if (d1 > 95) {
+
+                target1.style.visibility = "hidden";
+                target2.style.visibility = "visible";
+                var inter2 = setInterval(function () {
+                    if (d2 == 180) {
+                        clearInterval(inter2);
+                    }
+                    d2 += 1;
+                    target2.style.transform = "rotateY(" + d2 + "deg)";
+                
+                }, 10);
+
+                clearInterval(inter);
+            } else {
+                target1.style.transform = "rotateY(" + d1 + "deg)";
+            }
+
+
+        }, 10);
+    </script>
+
+</body>
+
+</html>
