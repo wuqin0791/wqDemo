@@ -72,7 +72,7 @@
 <body>
     <div style="position:relative;perspective: 2000px;" class="content">
         <img style="transform:rotateY(0deg);position:absolute;top:0px;visibility: visible;" src="img/1.jpg" class="img">
-        <img style="transform:rotateY(95deg);position:absolute;top:0px;visibility: hidden;" src="img/2.jpg" class="img">
+        <img style="transform:rotateY(90deg);position:absolute;top:0px;visibility: hidden;" src="img/2.jpg" class="img">
         <span class="clearfix"></span>
         </ul>
 
@@ -82,11 +82,11 @@
         var target1 = document.getElementsByTagName('img')[0];
         var target2 = document.getElementsByTagName('img')[1];
         var d1 = 0;
-        var d2 = 95;
+        var d2 = 90;
         var inter = setInterval(function () {
             d1 += 1;
 
-            if (d1 > 95) {
+            if (d1 > 90) {
 
                 target1.style.visibility = "hidden";
                 target2.style.visibility = "visible";
