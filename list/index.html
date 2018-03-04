@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Demo List</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=640, target-densitydpi=device-dpi, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- <script type="text/javascript" src="js/index.js"></script> -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+
+            padding: 0px;
+            margin: 0px;
+            height: 100%;
+            background-image: -webkit-radial-gradient(ellipse, white, black);
+            background-image: radial-gradient(ellipse, white, black);
+
+        }
+
+        img {
+            width: 300px;
+        }
+
+        li {
+            list-style-type: none;
+            float: left;
+        }
+
+        .content {
+            height: 1000px;
+            /* background: lightcoral; */
+            display: flex;
+            -webkit-display: flex;
+            flex-direction: column;
+        }
+
+        .content div {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+
+        .face-container {
+            position: relative;
+            perspective: 2000px;
+        }
+
+        .first-opp-face {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            visibility: hidden;
+            text-align: center;
+            vertical-align: middle;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .first-face {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .second-face {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .second-face .pip:nth-of-type(2) {
+            align-self: flex-end;
+        }
+
+        .third-face {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .third-face .pip:nth-of-type(2) {
+            align-self: center;
+        }
+
+        .third-face .pip:nth-of-type(3) {
+            align-self: flex-end;
+        }
+
+        .fourth-face,
+        .sixth-face {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .fourth-face .column,
+        .sixth-face .column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .fifth-face {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .fifth-face .column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .fifth-face .column:nth-of-type(2) {
+            justify-content: center;
+        }
+
+        /* OTHER STYLES */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: center;
+            flex-wrap: wrap;
+            align-content: center;
+            font-family: 'Open Sans', sans-serif;
+
+            background: linear-gradient(top, #222, #333);
+        }
+
+        [class$="face"] {
+            margin: 16px;
+            padding: 4px;
+
+            background-color: #e7e7e7;
+            width: 104px;
+            height: 104px;
+            object-fit: contain;
+
+            box-shadow: inset 0 5px white,
+            inset 0 -5px #bbb,
+            inset 5px 0 #d7d7d7,
+            inset -5px 0 #d7d7d7;
+
+            border-radius: 10%;
+            perspective: 2000px;
+        }
+
+        .pip {
+            display: block;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin: 4px;
+
+            background-color: #333;
+            box-shadow: inset 0 3px #111, inset 0 -3px #555;
+        }
+
+        .ninth-face .column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .ninth-face {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .ninth-face .column:nth-of-type(2) {
+            justify-content: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <div class="content">
+        <div class="title">吴琴's Demo List</div>
+        <div class="container">
+            <div>
+                1
+            </div>
+            <div>
+                demo1
+            </div>
+        </div>
+    </div> -->
+    <div class="face-container">
+        <div class="first-face">
+            <span class="pip"></span>
+        </div>
+        <div class="first-opp-face">
+            陀螺仪
+        </div>
+    </div>
+
+    <div class="second-face">
+        <span class="pip"></span>
+        <span class="pip"></span>
+    </div>
+    <div class="third-face">
+        <span class="pip"></span>
+        <span class="pip"></span>
+        <span class="pip"></span>
+    </div>
+    <div class="fourth-face">
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+    </div>
+    <div class="fifth-face">
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+    </div>
+    <div class="sixth-face">
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+    </div>
+    <div class="ninth-face">
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+    </div>
+
+</body>
+<script src="js/index.js"></script>
+
+</html>
