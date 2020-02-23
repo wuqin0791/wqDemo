@@ -1,0 +1,32 @@
+<!--
+ * @Description: This is a html file
+ * @Author: JeanneWu
+ * @Date: 2020-02-23 09:02:02
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVVM实现原理</title>
+</head>
+<body>
+    <div id="app">
+        <div>Value of A : {{a.a}}</div>
+        <div>Value of B : {{b}}</div>
+    </div>
+    
+</body>
+<script src="vue.js"></script>
+<script>
+    let vue = new Vue({
+        el: "#app",
+        data: {
+            a:{
+                a: "is A"
+            },
+            b: "is B"
+        }
+    })
+</script>
+</html>
