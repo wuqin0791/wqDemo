@@ -43,6 +43,11 @@ function Compile(el, vm) {
             if(node.nodeType === 3 && regExp.test(content)){
                 console.log(RegExp.$1);
                 let arr = RegExp.$1.split('.');
+                let val = vm;
+                arr.forEach(k => { //取到this.a.a
+                    val = val[k];
+                })
+                node.textContent = content.replace(regExp, val);
             }
             if (node.childNodes){
                 replace(node);
