@@ -5,7 +5,6 @@
  */
 
 function Vue(options = {}) {
-    // console.log(options);
     this.$options = options;
     let data = this._data = this.$options.data;
     observe(data);
@@ -22,6 +21,7 @@ function Vue(options = {}) {
         });
     }
     new Compile(options.el, this);
+    
 };
 /**
  * @description:  编译，把数据放到内存中（createDocumentFragment）
@@ -48,9 +48,9 @@ function Compile(el, vm) {
                 arr.forEach(k => { //取到this.a.a
                     val = val[k];
                 });
+                
                 // replace
                 new Watch(vm, regExpGroup1, newVal => {
-                    console.log(111);
                     node.textContent = content.replace(regExp, newVal);
                 });
                 node.textContent = content.replace(regExp, val);
@@ -84,7 +84,7 @@ function Observe(data) {
                 return val;
             },
             set(newVal) {
-                if (newVal === val) return
+                if (newVal === val) return;
                 val = newVal;
                 observe(newVal);
                 dep.notify();
