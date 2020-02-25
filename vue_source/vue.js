@@ -43,7 +43,6 @@ function initComputed(){
  * @return: 
  */
 function Compile(el, vm) {
-    avoidExceed(vm);
     vm.$el = document.querySelector(el);
     let fragment = document.createDocumentFragment();
     while (child = vm.$el.firstChild) {
@@ -57,7 +56,7 @@ function Compile(el, vm) {
             let regExp = /\{\{(.*)\}\}/;
             if (node.nodeType == 1){
                 let nodeAttrs = node.attributes;
-                Array.from(nodeAttrs).forEach(function(attr){
+                Array.from(nodeAttrs).forEach(attr => {
                     let name = attr.name;
                     let exp = attr.value;
                     if(name.indexOf('v-') == 0){
@@ -68,8 +67,6 @@ function Compile(el, vm) {
                     });
                     node.addEventListener('input', e => {
                         let newVal = e.target.value;
-                        // console.log(vm,111);
-                        // console.log(exp,222);
                         vm[exp] = newVal;
                     })
                 });
@@ -104,8 +101,9 @@ function observe(data) {
 
 function Observe(data) {
     // 类型判断，防止溢出
-    avoidExceed(data);
     console.log(data,999);
+    if (Object.prototype.toString.call(data) !== "[object Object]") return;
+    
     let dep;
     for (let key in data) {
         dep = new Dep();
@@ -118,7 +116,6 @@ function Observe(data) {
                 return val;
             },
             set(newVal) {
-                console.log(newVal,444);
                 if (newVal === val) return;
                 val = newVal;
                 observe(val);
