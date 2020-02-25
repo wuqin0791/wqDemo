@@ -103,7 +103,6 @@ function Observe(data) {
     // 类型判断，防止溢出
     console.log(data,999);
     if (Object.prototype.toString.call(data) !== "[object Object]") return;
-      
     let dep;
     for (let key in data) {
         dep = new Dep();
