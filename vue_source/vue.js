@@ -7,6 +7,7 @@
 function Vue(options = {}) {
     this.$options = options;
     let data = this._data = this.$options.data;
+    console.log(data);
     observe(data);
     // 这一部分实现了数据代理
     for (let key in data) {
@@ -20,9 +21,22 @@ function Vue(options = {}) {
             }
         });
     }
+    initComputed.call(this);
     new Compile(options.el, this);
     
 };
+function initComputed(){
+    let vm = this;
+    let computed = this.$options.computed;
+    Object.keys(computed).forEach(key => {
+        Object.defineProperty(vm, key, {
+            get: typeof computed[key] == 'function' ? computed[key]: computed[key].get,
+            set(){
+
+            }
+        });
+    });
+}
 /**
  * @description:  编译，把数据放到内存中（createDocumentFragment）
  * @param {type} 
@@ -41,7 +55,26 @@ function Compile(el, vm) {
         Array.from(fragment.childNodes).forEach(node => {
             let content = node.textContent;
             let regExp = /\{\{(.*)\}\}/;
-            if (node.nodeType === 3 && regExp.test(content)) {
+            if (node.nodeType == 1){
+                let nodeAttrs = node.attributes;
+                Array.from(nodeAttrs).forEach(function(attr){
+                    let name = attr.name;
+                    let exp = attr.value;
+                    if(name.indexOf('v-') == 0){
+                        node.value = vm[exp];
+                    }
+                    new Watch(vm, exp, newVal => {
+                        node.value = newVal;
+                    });
+                    node.addEventListener('input', e => {
+                        let newVal = e.target.value;
+                        // console.log(vm,111);
+                        // console.log(exp,222);
+                        vm[exp] = newVal;
+                    })
+                });
+            };
+            if (+node.nodeType === 3 && regExp.test(content)) { //文本
                 let regExpGroup1 = RegExp.$1;
                 let arr = regExpGroup1.split('.');
                 let val = vm;
@@ -72,6 +105,7 @@ function observe(data) {
 function Observe(data) {
     // 类型判断，防止溢出
     avoidExceed(data);
+    console.log(data,999);
     let dep;
     for (let key in data) {
         dep = new Dep();
@@ -84,9 +118,10 @@ function Observe(data) {
                 return val;
             },
             set(newVal) {
+                console.log(newVal,444);
                 if (newVal === val) return;
                 val = newVal;
-                observe(newVal);
+                observe(val);
                 dep.notify();
             }
         })

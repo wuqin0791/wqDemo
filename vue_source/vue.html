@@ -14,6 +14,8 @@
     <div id="app">
         <div>Value of A : {{a.a}}</div>
         <div>Value of B : {{b}}</div>
+        <input type="text" v-model="b" >
+        {{hello}}
     </div>
     
 </body>
@@ -26,7 +28,13 @@
             a:{
                 a: "is A"
             },
-            b: "is B"
+            b: "is B",
+            c: "ok"
+        },
+        computed: {
+            hello(){
+                return this.b + this.c;
+            }
         }
     })
 </script>
