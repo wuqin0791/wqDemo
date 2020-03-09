@@ -1,0 +1,34 @@
+<!--
+ * @Description: This is a html file
+ * @Author: JeanneWu
+ * @Date: 2020-03-09 10:06:44
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border-image 的正确用法</title>
+    <style>
+        .box {
+            width: 27px;
+            height: 27px;
+            border: 27px solid;
+            /* 不带fill会过滤中心点的图片 */
+            border-image: url(box.png) 27 27 27 27 fill repeat stretch; 
+            /* border-image-width 字面意思是边框图片宽度，作用是将 DOM 节点分割成九宫格。
+             假设 border-image-slice 分割 border-image-source 的九宫格为A， 
+             border-image-width 分割 DOM 的九宫格为 B，A 与 B 的每个格子存在一一对应关系 */
+            border-image-width: auto; 
+            background-clip: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>
