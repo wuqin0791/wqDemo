@@ -1,0 +1,42 @@
+<!--
+ * @Description: This is a XX file
+ * @Author: JeanneWu
+ * @Date: 2020-03-09 15:57:50
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>溢出省略样式</title>
+    <style>
+        .ellipsis{
+            width:400px;
+            /*要显示文字的宽度*/
+            text-overflow :ellipsis;
+            /*让截断的文字显示为点点。还有一个值是clip意截断不显示点点*/
+            white-space :nowrap;
+            /*让文字不换行*/
+            overflow : hidden;
+            /*超出要隐藏*/
+            
+        }
+        .column{
+            border: 10px solid #000000;
+            column-count:3;
+        }
+    </style>
+</head>
+
+<body>
+<div class="ellipsis">
+    哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+</div>
+<div class="column">
+    哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+</div>
+</body>
+
+</html>

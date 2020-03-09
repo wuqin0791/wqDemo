@@ -1,0 +1,44 @@
+<!--
+ * @Description: This is a HTML file chrome提示失效 ？？？
+ * @Author: JeanneWu
+ * @Date: 2020-03-09 15:35:30
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>background-break属性的使用示例</title>
+    <style>
+        span {
+            background-color: #888888;
+            background-image: url(box.png);
+            padding: 0.2em;
+            color: gray;
+            line-height: 1.5;
+            font-size: 1em;
+            font-weight: bold;
+            /* continuous 重复 */
+
+            background-break: each-box;
+            display: inline-block;
+            width: 2000px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <span></span>
+    </div>
+    <div class="div2">
+        <span></span>
+    </div>
+    <div class="div3">
+        <span></span>
+    </div>
+</body>
+
+</html>

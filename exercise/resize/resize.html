@@ -1,0 +1,59 @@
+<!--
+ * @Description: This is a HTML file
+ * @Author: JeanneWu
+ * @Date: 2020-03-09 20:29:01
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resize</title>
+    <style>
+        .resizable {
+            resize: both;
+            overflow: scroll;
+            border: 1px solid black;
+        }
+
+        div {
+            height: 300px;
+            width: 300px;
+        }
+
+        p {
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resizable">
+        <p class="resizable">
+            This paragraph is resizable, because the CSS resize property is set to 'both' on this
+            element.
+        </p>
+    </div>
+</body>
+
+<script type="text/javascript">
+    let box = document.getElementsByTagName('div')[0]
+
+    // 只能取到内联样式的宽高
+    console.log('style:' + box.style.width) // 100px
+    
+    // 内联样式和外联样式的宽高都能取到，但只有 IE 支持， chrome报错
+    console.log('currentStyle:' + box.currentStyle.width) // 100px
+    
+    // 内联样式和外联样式的宽高都能取到，几乎所有主流浏览器都支持
+    console.log('getComputedStyle:' + getComputedStyle(box).width) // 100px
+    
+    // 内联样式和外联样式的宽高都能取到，几乎所有主流浏览器都支持，取到的是盒子总宽度
+    console.log('getBoundingClientRect:' + box.getBoundingClientRect().width) // 210
+
+</script>
+
+</html>
