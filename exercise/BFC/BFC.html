@@ -1,0 +1,41 @@
+
+
+<!--
+ * @Description: This is a HTML file
+ * @Author: JeanneWu
+ * @Date: 2020-03-10 09:11:20
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFC 例子</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .father {
+            background: green;
+            overflow: hidden
+        }
+
+        /* 给儿子设置margin-top为10像素 */
+        .son {
+            height: 100px;
+            margin-top: 10px;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div> 
+</body>
+</html>
+<!-- 善于使用父亲的padding，而不是儿子的margin -->
