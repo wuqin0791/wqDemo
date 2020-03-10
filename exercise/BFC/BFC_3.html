@@ -1,0 +1,49 @@
+
+
+<!--
+ * @Description: This is a HTML file
+ * @Author: JeanneWu
+ * @Date: 2020-03-10 10:27:24
+ -->
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>For solution 3</title>
+     <style>
+ 
+         .father-layout {
+             background: pink;
+         }
+ 
+         .father-layout .left {
+             float: left;
+             width: 100px;
+             height: 100px;
+             background: green;
+         }
+ 
+         .father-layout .right {
+             height: 150px;  /*右侧标准流里的元素，比左侧浮动的元素要高*/
+             background: red;
+             overflow: hidden;
+             /* 第三条：BFC区域不与float box区域重叠，否则右侧会掉下去 */
+         }
+ 
+     </style>
+ </head>
+ <body>
+ 
+ <section class="father-layout">
+     <div class="left">
+         左侧，生命壹号
+     </div>
+     <div class="right">
+         右侧，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，
+     </div>
+ </section>
+ 
+ </body>
+ </html>

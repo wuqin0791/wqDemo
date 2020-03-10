@@ -4,6 +4,15 @@
  * @Description: This is a HTML file
  * @Author: JeanneWu
  * @Date: 2020-03-10 09:11:20
+BFC 的原理/BFC的布局规则【非常重要】
+（1）BFC 里面的元素，在垂直方向，边距会发生重叠。
+
+（2）BFC在页面中是独立的容器，外面的元素不会影响里面的元素，反之亦然。（稍后看举例1）
+
+（3）BFC区域不与旁边的float box区域重叠。（可以用来清除浮动带来的影响）。（稍后看举例2）
+
+（4）计算BFC的高度时，浮动的子元素也参与计算。（稍后看举例3）
+以下是（1）（2） BFC区域是一个独立的区域，不会影响外面的元素。
  -->
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +30,7 @@
         .father {
             background: green;
             overflow: hidden
+            /* BFC区域是一个独立的区域，不会影响外面的元素。 */
         }
 
         /* 给儿子设置margin-top为10像素 */
@@ -38,4 +48,8 @@
     </div> 
 </body>
 </html>
-<!-- 善于使用父亲的padding，而不是儿子的margin -->
+<!-- 善于使用父亲的padding，而不是儿子的margin
+儿子p有个50px的margin-top
+但是却让整个儿子P和父亲div有了margin-top。
+原因是父亲div没有border属性
+margin这个属性，本质上描述的是兄弟和兄弟之间的距离； 最好不要用这个marign表达父子之间的距离。 -->

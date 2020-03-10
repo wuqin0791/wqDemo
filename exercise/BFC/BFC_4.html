@@ -1,0 +1,39 @@
+<!--
+ * @Description: This is a HTML file
+ * @Author: JeanneWu
+ * @Date: 2020-03-10 10:46:55
+ 为什么父元素成为BFC之后，就有了高度呢？
+ 这就回到了第四条：计算BFC的高度时，浮动元素也参与计算。
+ 意思是，在计算BFC的高度时，子元素的float box也会参与计算。
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>solution for 4</title>
+    <style>
+        .father {
+            background: pink;
+            overflow: hidden; 
+            /* 这里很重要 */
+        }
+
+        .son {
+            float: left;
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="father">
+        <div class="son">
+            生命壹号
+        </div>
+
+    </section>
+</body>
+
+</html>

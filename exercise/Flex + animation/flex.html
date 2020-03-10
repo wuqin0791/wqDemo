@@ -1,0 +1,66 @@
+<!--
+ * @Description: This is a HTML file
+ * @Author: JeanneWu
+ * @Date: 2020-03-10 10:54:32
+ -->
+<!-- 参考https://www.ruanyifeng.com/blog/2015/07/flex-examples.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>solution for flex</title>
+    <style>
+        .container {
+            background: black;
+            width: 550px;
+            height: 600px;
+            display: flex;
+            justify-content: space-between;
+
+            /* flex-wrap: wrap; */
+
+        }
+
+        .inner {
+            width: 50px;
+            height: 50px;
+
+            border-radius: 50%;
+            background: white;
+            display: inline-block;
+            /* transition: 1s 1s width ease; */
+
+            /* flex: 1; */
+        }
+
+        .inner:hover {
+            /* width: 300px; */
+            animation: 1s rainbow;
+        }
+        @keyframes rainbow {
+            0% { background: #c00; }
+            50% { background: orange; }
+            100% { background: yellowgreen; }
+        }
+        .container .inner:nth-of-type(2) {
+            align-self: center;
+        }
+
+        .container .inner:nth-of-type(3) {
+            align-self: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+    </div>
+</body>
+
+</html>
