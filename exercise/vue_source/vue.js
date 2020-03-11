@@ -1,5 +1,5 @@
 /*
- * @Description: This is a javascript file
+ * @Description: VUE的源码实现
  * @Author: JeanneWu
  * @Date: 2020-02-23 09:02:22
  */
@@ -44,6 +44,7 @@ function initComputed(){
  */
 function Compile(el, vm) {
     vm.$el = document.querySelector(el);
+    // 生成新的空白的文档片段
     let fragment = document.createDocumentFragment();
     while (child = vm.$el.firstChild) {
         fragment.appendChild(child);
@@ -54,6 +55,7 @@ function Compile(el, vm) {
         Array.from(fragment.childNodes).forEach(node => {
             let content = node.textContent;
             let regExp = /\{\{(.*)\}\}/;
+            // 元素节点
             if (node.nodeType == 1){
                 let nodeAttrs = node.attributes;
                 Array.from(nodeAttrs).forEach(attr => {
