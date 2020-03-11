@@ -1,0 +1,50 @@
+<!--
+ * @Description: This is a HTML file
+ * @Author: JeanneWu
+ * @Date: 2020-03-10 17:49:00
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>solution for 3-column-display by float</title>
+    <style>
+        .wrapper {
+            /* 设置BFC，包含float的高度 */
+            overflow: hidden
+        }
+
+        .left {
+            background: lightblue;
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+
+        .center {
+            background: coral;
+            width: auto;
+            margin: 0 220px 0 220px;
+            height: 300px;
+        }
+
+        .right {
+            background: #CA7F8C;
+            width: 200px;
+            height: 200px;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">center</div>
+    </div>
+</body>
+
+</html>
