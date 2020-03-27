@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMO OF JSONP</title>
+</head>
+
+<body>
+    hahha
+</body>
+<script>
+    function jsonP(url) {
+        const script = document.createElement('script');
+        script.src = url;
+        script.type = 'text/javascript';
+        document.body.appendChild(script)
+    }
+
+    jsonP("http://localhost:8888?callback=msg")
+
+    function msg(res) {
+        alert(res.data);
+    }
+</script>
+
+</html>
