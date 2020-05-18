@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML5拖拽</title>
+<meta charset="utf-8">
+<style>
+#div1 {
+    width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    }
+</style>
+</head>
+<body>
+
+<div id="div1"></div>
+
+<script>
+  let dom = document.getElementById('div1');
+  let status = false;
+  let position = [350/2, 35];;
+dom.addEventListener('mousedown', e => {
+    status = true;
+    
+    console.log(11);
+});
+
+document.addEventListener('mousemove', e => {
+    if (status === false) return;
+        
+        let left = +dom.style.left.split('px')[0] || 0;
+        let top = +dom.style.top.split('px')[0] || 0;
+
+        let x = e.clientX;
+        let y = e.clientY;
+
+        let deltaX = x - position[0];
+        let deltaY = y - position[1];
+
+        deltaX = deltaX < 0 ? 0: deltaX;
+        deltaY = deltaY < 0 ? 0: deltaY;
+  
+
+        dom.style.left = deltaX + 'px';
+        dom.style.top = deltaY + 'px';
+
+        console.log(deltaX,'deltaX');
+        console.log(dom.style.left,'dom.style.left');
+       
+        
+        // position[x,y];
+
+
+});
+
+document.addEventListener('mouseup', e => {
+    status = false;
+    position[e.clientX, e.clientY];
+})
+
+</script>
+</body>
+</html>

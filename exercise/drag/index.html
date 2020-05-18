@@ -1,0 +1,69 @@
+<!--
+ * @Description: This is a XX file
+ * @Author: JeanneWu
+ * @Date: 2020-04-01 10:21:50
+ -->
+
+
+ <!DOCTYPE html>
+ <html>
+ 
+ <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width">
+     <title>JS Bin</title>
+     <style>
+         .drag{
+             width: 100px;
+             height: 100px;
+             border: 1px solid red;
+             position: absolute;
+  
+         }
+        
+ 
+     </style>
+ </head>
+ 
+ <body>
+     <div id="drag" class="drag">
+ 
+     </div>
+ </body>
+ <script>
+    // let dom = document.getElementsByClassName('drag')[0];
+    let dom = document.getElementById('drag');
+    let drag = false;
+    let position = null;
+    dom.addEventListener('mousedown', e => {
+      drag = true;
+      console.log(e.clientX, 'e.clientX');
+      position = [e.clientX, e.clientY];
+    });
+ 
+    document.addEventListener('mousemove', e => {
+         if(drag === false) return;
+         const x = e.clientX;
+         const y = e.clientY;
+  
+         deltaX = x - position[0];
+         deltaY = y - position[1];
+         console.log(dom.style.left, 'left');
+         let left = +dom.style.left || 0;
+         let top = +dom.style.top || 0;
+         console.log(deltaX, 'top');
+         dom.style.left = left + deltaX + 'px';
+         dom.style.top = top + deltaY + 'px';
+         
+         position[x,y];
+    });
+ 
+    document.addEventListener('mouseup', e => {
+     const x = e.clientX;
+     const y = e.clientY;
+      drag = false;
+      position[x,y];
+    })
+ </script>
+ 
+ </html>

@@ -1,26 +1,56 @@
-
-
-<!--
- * @Description: This is a HTML file
- * @Author: JeanneWu
- * @Date: 2020-03-27 17:21:43
- -->
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>测试target 和 currentTarget</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
 </head>
+<style>
+    .wrapper {
+        position: relative;
+        background: black;
+        width: 1000px;
+        height: 1000px;
+    }
+
+    .inner {
+        width: 50px;
+        height: 50px;
+        background: red;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%)
+    }
+</style>
+
 <body>
-    <ul>
-        <li>apple</li>
-        <li>banana</li>
-        <li>peal</li>
-        <li>cat</li>
-        <li>rabbit</li>
-    </ul>
+    <div class="wrapper">
+        <div class="inner"></div>
+    </div>
 </body>
+<script>
+    let elem = document.getElementsByClassName("inner")[0];
+    let theCSSprop = window.getComputedStyle(elem).height;
+
+    function _debounce(fn, wait) {
+        let timer = null;
+        return function() {
+            clearTimeout(timer);
+            timer = setTimeout( _ => {
+                fn();
+            }, wait);
+        }
+
+    }
+
+
+    function _log() {
+        console.log(1);
+    }
+
+    window.onscroll = _debounce(_log, 500)
+</script>
+
 </html>

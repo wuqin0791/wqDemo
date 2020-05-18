@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大文件分片上传</title>
+</head>
+<body>
+    <input type="file" name="" id="file-upload">
+</body>
+<script src="./promise.js"></script>
+<script type="text/javascript">
+    function sliceFile(){
+        let file = document.getElementById('file-upload').files[0];
+        const chunkSize = 2*1024*1024; //2M
+        let chunks = [];
+        // console.log(file.size/chunkSize);
+        if (file.size > chunkSize) {
+            let Bolb;
+            let [start, end] = [0,0];
+            let length = Math.ceil(file.size/chunkSize);
+            for(let i = 0; i < length; i++){
+                console.log(i);
+                if(i === length){
+                    end += file.size;
+                }else {
+                    end += chunkSize;
+                }
+                // console.log(Object.prototype.toString.call(file.slice(start,end)))
+                chunks.push(file.slice(start,end));
+                start += chunkSize;
+            }
+        }else{
+            chunks.push(file.slice(0));
+        }
+
+        console.log(chunks);
+        promise({
+            method: 'POST',
+            url: 'http://localhost:3001',
+            data: chunks
+        })
+
+
+    }
+    // sliceFile()
+    document.getElementById('file-upload').addEventListener('change',sliceFile)
+
+
+
+
+</script>
+</html>
